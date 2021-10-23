@@ -8,10 +8,17 @@ const s3 = new aws.S3({
     secretAccessKey: process.env.AWS_SECRET,
   },
 });
+const isHeroku = process.env.NODE_ENV === "production";
 
-const multerUploader = multerS3({
+const s3ImageUploader = multerS3({
   s3,
-  bucket: "boohotube",
+  bucket: "boohotube/images",
+  acl: "public-read",
+});
+
+const s3VideoUploader = multerS3({
+  s3,
+  bucket: "boohotube/videos",
   acl: "public-read",
 });
 
@@ -46,11 +53,11 @@ export const publicOnlyMiddleware = (req, res, next) => {
 export const avatarUploadMiddleware = multer({
   dest: "uploads/avatars",
   limits: { fileSize: 3000000 },
-  storage: multerUploader,
+  storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const videoUploadMiddleware = multer({
   dest: "uploads/videos",
   limits: { fileSize: 100000000 },
-  storage: multerUploader,
+  storage: isHeroku ? s3VideoUploader : undefined,
 });

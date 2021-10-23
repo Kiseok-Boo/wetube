@@ -3,8 +3,10 @@ mixin video(video)
         div.video-mixin__thumb
             img(src=video.thumbnailURL, crossorigin).video-mixin__thumbnail
         div.video-mixin__data
-            span.video-mixin__title=video.title
-            div.video-mixin__meta
-                span #{video.owner.username}
-                i.fas.fa-check-circle
-                span #{video.meta.views}회
+            img(src=video.owner.avatarURL, crossorigin).video-mixin__avatar
+            div.video-mixin__detail
+                span.video-mixin__title=video.title
+                div.video-mixin__meta
+                    span #{video.owner.username}
+                    i.fas.fa-check-circle
+                    span  #{video.meta.views}회

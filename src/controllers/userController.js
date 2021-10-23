@@ -86,10 +86,12 @@ export const postEdit = async (req, res) => {
       errorMessage: "This username is already taken.",
     });
   }
+  const isHeroku = process.env.NODE_ENV === "production";
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarURL: file ? file.location : avatarURL,
+      // eslint-disable-next-line no-nested-ternary
+      avatarURL: file ? (isHeroku ? file.location : file.path) : avatarURL,
       email,
       username,
       location,
