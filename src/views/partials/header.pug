@@ -20,7 +20,7 @@ header
                             div.header__baseAvatar
                                 i.fas.fa-user
                         else
-                            img(src="/" + loggedInUser.avatarURL).header__avatar
+                            img(src=loggedInUser.avatarURL).header__avatar
             else
                 li
                     a(href="/login").header__btn Login
