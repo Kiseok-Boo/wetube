@@ -20,7 +20,7 @@ header
                             div.header__baseAvatar
                                 i.fas.fa-user
                         else
-                            if loggenInUser.socialOnly
+                            if loggenInUser.githubLogin
                                 img(src=loggedInUser.avatarURL).header__avatar
                             else
                                 img(src="/" + loggedInUser.avatarURL).header__avatar
