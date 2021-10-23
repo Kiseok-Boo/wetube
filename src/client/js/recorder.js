@@ -39,7 +39,7 @@ const handleDownloadRecording = async () => {
     "-i",
     files.input,
     "-ss",
-    "0:05",
+    "0:01",
     "-frames:v",
     "1",
     files.thumbnail
