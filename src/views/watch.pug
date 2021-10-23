@@ -1,0 +1,74 @@
+extends base.pug
+
+block content
+    div(data-ID=video._id)#videoContainer
+        video(src="/" + video.fileURL)
+        //- div#videoStatus.video__status
+        //-     i#videoStatusIcon
+        div#videoControls.videoControls
+            input(type="range",step="0.1", value="0", min="0")#timeline.videoControls__timeline
+            div.videoControls__all
+                div.videoControlsBtns
+                    div.videoControls__play
+                        span#play.videoControls__playBtn
+                            i.fas.fa-play
+                    div#volumeDiv.videoControls__volume
+                        span#mute.videoControls__mute
+                            i.fas.fa-volume-up
+                        input(type="range",step="0.01", value=0.5, min="0", max="1")#volume.videoControls__volumeRange
+                        div#timeDiv.videoControls__time
+                            span#currentTime 0:00
+                            span  / 
+                            span#totalTime 00:00
+                div.videoControls__fullScreen
+                    span#fullScreen
+                        i.fas.fa-expand.fa-lg
+    div.video_info
+        div.video_info-primary
+            small.video_info-primary_hashtags=video.hashtags
+            h2.video_info-primary_title=video.title
+            div.video_info_primary_etc
+                small.video_info-primary_views=`Views ${video.meta.views}`
+                span.video_info-primary_dot •
+                small.video_info-primary_uploadedTime=video.createdAt
+        div.video_info-secondary
+            div.video_info-secondary_videoOwner
+                a(href=`/users/${video.owner._id}`)
+                    if !video.owner.avatarURL
+                        div.video_info-secondary_videoOwner_baseAvatar
+                            i.fas.fa-user
+                    else
+                        img(src="/" + video.owner.avatarURL).video_info-secondary_videoOwner_avatar
+                a(href=`/users/${video.owner._id}`).video_info-secondary_videoOwner_username #{video.owner.username}
+            p.video_info-secondary_description=video.description
+            div.video_info-secondary_buttons
+                if String(video.owner._id) === loggedInUser._id
+                    a(href=`${video.id}/edit`).video_info-secondary_button Edit Video &rarr;
+                    a(href=`${video.id}/delete`).video_info-secondary_button Delete Video &rarr;
+
+    if loggedIn
+        div.video__createComments
+            small.video__number_of_comments #{video.comments.length} Comments
+            form.video__createComments-form#commentForm
+                if !loggedInUser.avatarURL
+                    div.video__createComments-form_baseAvatar
+                        i.fas.fa-user
+                else
+                    img(src="/" + loggedInUser.avatarURL).video__createComments-form_avatar
+                textarea(cols="30", rows="10", placeholder="Write a comment").video__createComments-form_input#commentInput
+                button.video__createComments-form_cancelBtn#commentCancelBtn Cancel
+                button.video__createComments-form_btn#commentBtn Add Comment 
+
+    div.video__comments
+        ul.video__comments_list#commentLists
+            each comment in video.comments.reverse()
+                li.video__comment(data-ID=comment.id)
+                    i.fas.fa-comment
+                    span.video__comment_text  #{comment.text}
+                    if String(comment.owner) === loggedInUser._id
+                        span.deleteCommentBtn ❌
+
+block scripts
+    script(src="/static/js/videoPlayer.js")
+    if loggedIn
+        script(src="/static/js/commentSection.js")

@@ -1,0 +1,67 @@
+.video__createComments {
+  padding-top: 20px;
+  margin-bottom: 40px;
+  .video__number_of_comments {
+    font-size: large;
+  }
+  .video__createComments-form {
+    margin-top: 20px;
+    width: 66%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .video__createComments-form_baseAvatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .video__createComments-form_avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .video__createComments-form_input {
+      width: 75%;
+      height: 30px;
+      cursor: text;
+      border: 0;
+      background-color: #f9f9f9;
+      border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+    }
+    .video__createComments-form_cancelBtn {
+      border: 0;
+      border-radius: 3px;
+      height: 36px;
+    }
+    .video__createComments-form_btn {
+      height: 36px;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: rgba(0, 0, 0, 0.2);
+      border: 0;
+      border-radius: 3px;
+    }
+  }
+}
+.video__comments {
+  .video__comments_list {
+    .video__comment {
+      width: 30%;
+      margin: 20px 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 10px 10px;
+      border-radius: 10px;
+      .video__comment_text {
+        margin-left: 20px;
+      }
+      .deleteCommentBtn {
+        cursor: pointer;
+      }
+    }
+  }
+}

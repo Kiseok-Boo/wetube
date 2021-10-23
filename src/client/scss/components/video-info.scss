@@ -1,0 +1,63 @@
+.video_info {
+  width: 66%;
+  position: relative;
+  .video_info-primary {
+    padding: 20px 0 8px 0;
+    border-bottom: solid 1.5px rgba(0, 0, 0, 0.1);
+    .video_info-primary_hashtags {
+      color: #4285f4;
+    }
+    .video_info-primary_title {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .video_info_primary_etc {
+      padding: 15px 0;
+      .video_info-primary_dot {
+        margin: 0 8px;
+      }
+    }
+  }
+  .video_info-secondary {
+    padding: 15px 0;
+    border-bottom: solid 1.5px rgba(0, 0, 0, 0.1);
+    .video_info-secondary_videoOwner {
+      display: flex;
+      align-items: center;
+      .video_info-secondary_videoOwner_baseAvatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgb(201, 199, 199);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 30px;
+        }
+      }
+      .video_info-secondary_videoOwner_avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+      .video_info-secondary_videoOwner_username {
+        margin-left: 15px;
+        font-size: 18px;
+      }
+    }
+    .video_info-secondary_description {
+      margin: 0 75px;
+    }
+    .video_info-secondary_buttons {
+      margin: 30px 0 0 75px;
+      .video_info-secondary_button {
+        font-weight: bold;
+        border-radius: 5px;
+        background-color: #cc0a02;
+        color: white;
+        margin-right: 5px;
+      }
+    }
+  }
+}

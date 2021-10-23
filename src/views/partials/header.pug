@@ -1,0 +1,27 @@
+header
+    a(href="/").header__logo
+        i.fab.fa-youtube
+    form(method="GET" action="/search").search__form
+        input(name="keyword", placeholder="Search by title", type="text")
+        button
+            i.fas.fa-search
+    nav 
+        ul
+            if loggedIn
+                li 
+                    a(href="/videos/upload") Upload Video
+                li
+                    a(href="/users/edit") Edit Profile
+                li
+                    a(href="/users/logout") Log Out
+                li
+                    a(href=`/users/${loggedInUser._id}`)
+                        if !loggedInUser.avatarURL
+                            div.header__baseAvatar
+                                i.fas.fa-user
+                        else
+                            img(src="/" + loggedInUser.avatarURL).header__avatar
+            else
+                li
+                    a(href="/login").header__btn Login
+            
