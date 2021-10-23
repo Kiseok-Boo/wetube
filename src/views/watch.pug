@@ -2,7 +2,7 @@ extends base.pug
 
 block content
     div(data-ID=video._id)#videoContainer
-        video(src="/" + video.fileURL)
+        video(src=video.fileURL)
         //- div#videoStatus.video__status
         //-     i#videoStatusIcon
         div#videoControls.videoControls
@@ -38,7 +38,7 @@ block content
                         div.video_info-secondary_videoOwner_baseAvatar
                             i.fas.fa-user
                     else
-                        img(src="/" + video.owner.avatarURL).video_info-secondary_videoOwner_avatar
+                        img(src=video.owner.avatarURL).video_info-secondary_videoOwner_avatar
                 a(href=`/users/${video.owner._id}`).video_info-secondary_videoOwner_username #{video.owner.username}
             p.video_info-secondary_description=video.description
             div.video_info-secondary_buttons
@@ -54,7 +54,7 @@ block content
                     div.video__createComments-form_baseAvatar
                         i.fas.fa-user
                 else
-                    img(src="/" + loggedInUser.avatarURL).video__createComments-form_avatar
+                    img(src=loggedInUser.avatarURL).video__createComments-form_avatar
                 textarea(cols="30", rows="10", placeholder="Write a comment").video__createComments-form_input#commentInput
                 button.video__createComments-form_cancelBtn#commentCancelBtn Cancel
                 button.video__createComments-form_btn#commentBtn Add Comment 
