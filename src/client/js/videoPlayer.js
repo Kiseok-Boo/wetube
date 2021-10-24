@@ -15,6 +15,18 @@ const videoContainer = document.getElementById("videoContainer");
 const videoControls = document.getElementById("videoControls");
 // const videoStatus = document.getElementById("videoStatus");
 // const videoStatusIcon = videoStatus.querySelector("#videoStatusIcon");
+const handleSpace = (event) => {
+  const { key } = event;
+  if (
+    event.target.nodeName !== "INPUT" &&
+    event.target.nodeName !== "TEXTAREA"
+  ) {
+    if (key === " ") {
+      event.preventDefault();
+    }
+  }
+};
+window.addEventListener("keydown", handleSpace);
 
 let controlsTimeout = null;
 let controlsMovementTimeout = null;
@@ -112,7 +124,9 @@ const handleTimeUpdate = () => {
 };
 const handleTimelineStyle = () => {
   const time = (video.currentTime / timeline.max) * 100;
-  timeline.style.background = `linear-gradient(to right, red 0%, red ${time}%, rgba(255,255,255,0.6) ${time}%, rgba(255,255,255,0.6) 100%)`;
+  timeline.style.background = `linear-gradient(to right, red 0%, red ${
+    time + 0.5
+  }%, rgba(255,255,255,0.6) ${time + 0.5}%, rgba(255,255,255,0.6) 100%)`;
 };
 const handltTimelineChange = (event) => {
   const {
