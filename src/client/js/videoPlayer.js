@@ -267,3 +267,6 @@ document.addEventListener("fullscreenchange", () => {
     fullScreenIcon.classList = "fas fa-expand fa-lg";
   }
 });
+if (video.readyState === 4) {
+  handleLoadedMetaData();
+}
