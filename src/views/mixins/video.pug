@@ -3,7 +3,12 @@ mixin video(video)
         div.video-mixin__thumb
             img(src=video.thumbnailURL, crossorigin).video-mixin__thumbnail
         div.video-mixin__data
-            img(src=video.owner.avatarURL, crossorigin).video-mixin__avatar
+            if !video.owner.avatarURL
+                div.video-mixin__baseAvatar
+                    i.fas.fa-user
+            else
+                img(src=video.owner.avatarURL, crossorigin).video-mixin__avatar
+
             div.video-mixin__detail
                 span.video-mixin__title=video.title
                 div.video-mixin__meta
